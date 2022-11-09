@@ -4,7 +4,7 @@ clear;
 %Local variablels
 %Saab_93_datasheet;
 syms F_fx F_rx F_fz F_rz wdot_f wdot_r a %Unknown variables
-syms M g Fair h R T_f  s_fx J L_r L_f f_r s_rx s_fx theta mu_f mu_r
+syms M g Fair h R T_f  s_fx J L_r L_f f_r s_rx s_fx theta mu_f mu_r T_r
 
 %Local variablels
 wb = L_r+L_f;
@@ -25,7 +25,7 @@ eq5 = J*wdot_f == T_f-F_fx*R-F_fz*f_r*R;
 %Force horizontal front tyre
 eq6 = F_fx == F_fz*mu_f;
 %Moment rear tyre
-eq7 = J*wdot_r == -F_rx*R-F_fz*f_r*R;
+eq7 = J*wdot_r == T_r-F_rx*R-F_fz*f_r*R;
 %Force horizontal rear tyre
 eq8 = F_rx == F_rz*mu_r; %
 

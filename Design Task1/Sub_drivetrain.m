@@ -29,7 +29,7 @@ elseif CONST.torqf == 1
     w_ref = wf;
 else
     w_ref = 0.5*(wf+wr);
-end;
+end
 
 % Engine speed in all gears
 w_eng_all_gears = (ratio_final*ratio_vec*w_ref);
