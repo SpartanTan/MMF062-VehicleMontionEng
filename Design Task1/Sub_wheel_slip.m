@@ -1,5 +1,5 @@
 function slip=Sub_wheel_slip(v,w,CONST)
-
-slip=  ;
+R = CONST.R;
+slip=  (R*w-v)/abs(R*w);
 
 end
