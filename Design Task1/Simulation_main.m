@@ -17,11 +17,11 @@ CONST.torqf = 1; % torqueRatio: 0 => RWD, 1 => FWD
 
 %----Define road condition-------------------------------------------------
 % Function input
-roadCondition = 1; % dry=1, wet=2, ice=3 
+roadCondition = 2; % dry=1, wet=2, ice=3 
 
 %----Define slope of road--------------------------------------------------
 % Function input
-slope = 2*pi/180; % Slope of the road in 2 deg!
+slope = 8*pi/180; % Slope of the road in 2 deg!
 
 %----Task 1: Define initial conditions-------------------------------------
 s    = 0;                % Initial travelled distance
@@ -32,7 +32,7 @@ gear = 1;
 
 %----Define timestep and integration time----------------------------------
 Tstart = 0;            % Starting t
-Tend   = 18;           % Ending t
+Tend   = 15;           % Ending t
 dt     = 0.0005;       % t step
 t=(Tstart:dt:Tend);    % t vector
 
