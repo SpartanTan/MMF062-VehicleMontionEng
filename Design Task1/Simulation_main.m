@@ -13,7 +13,7 @@ clc;            % Clear command window
 CONST = Sub_read_data;
 
 %-----Define torque distribution between front and rear axis [0 ... 1]
-CONST.torqf = 0; % torqueRatio: 0 => RWD, 1 => FWD
+CONST.torqf = 1; % torqueRatio: 0 => RWD, 1 => FWD
 
 %----Define road condition-------------------------------------------------
 % Function input
@@ -21,7 +21,7 @@ roadCondition = 1; % dry=1, wet=2, ice=3
 
 %----Define slope of road--------------------------------------------------
 % Function input
-slope = 0*pi/180; % Slope of the road in 2 deg!
+slope = 8*pi/180; % Slope of the road in 2 deg!
 
 %----Task 1: Define initial conditions-------------------------------------
 s    = 0;                % Initial travelled distance
@@ -68,6 +68,7 @@ Tdrivr_max = Tdrivr_max0;
 %----Drag race variables--------------------------------------
 finishTime = 0;
 finishSpeed = 0;
+Task2d;
 
 %----Simulation over t-----------------------------------------------------
 for i=1:length(t)
@@ -104,7 +105,7 @@ for i=1:length(t)
     end;
     
     [a,wdotf,wdotr,Fzf,Fzr]=Sub_vehicle_dynamics(...
-            v,Tdrivf,Tdrivr,slipf,slipr,slope,roadCondition,CONST);
+            v,Tdrivf,Tdrivr,slipf,slipr,slope,roadCondition,CONST,solv);
     
     % Updating the distance, velocity, and rotational velocity
     s=s+v*dt;

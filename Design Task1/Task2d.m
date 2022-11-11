@@ -1,6 +1,5 @@
 %% 2a
 % clc;
-clear;
 %Local variablels
 %Saab_93_datasheet;
 syms F_fx F_rx F_fz F_rz wdot_f wdot_r a %Unknown variables
@@ -11,13 +10,18 @@ wb = L_r+L_f;
 
 %Chassi equations
 %Chassi vertical
-eq1 = M*a == F_fx + F_rx - Fair - M*g*sin(theta)
+eq1 = M*g*cos(theta) == F_fz + F_rz;
 %Chassi horizontal
-eq2 = M*g*cos(theta) == F_fz + F_rz;
-%Moment front wheel
-eq3 = 0 == -M*g*cos(theta)*L_f+F_rz*wb-Fair*(h-R);
-%Moment rear wheel
-eq4 = 0 == M*g*cos(theta)*L_r-F_fz*wb - Fair*(h-R);
+eq2 = M*a == F_fx + F_rx - Fair - M*g*sin(theta)
+
+% %Moment front wheel
+% eq3 = 0 == F_rz*wb-M*g*cos(theta)*L_f+-Fair*(h-R);
+% %Moment rear wheel
+% eq4 = 0 == -F_fz*wb+M*g*cos(theta)*L_r- Fair*(h-R);
+
+eq3 = 0 == F_rz*wb-M*g*cos(theta)*L_f-M*g*sin(theta)*h-M*a*h-Fair*h;
+%Moment rear axle
+eq4 = 0 == -F_fz*wb+M*g*cos(theta)*L_r-M*g*sin(theta)*h-M*a*h-Fair*h;
 
 %Tyre equations
 %   Moment front tyre
@@ -29,9 +33,9 @@ eq7 = J*wdot_r == T_r-F_rx*R-F_fz*f_r*R;
 %Force horizontal rear tyre
 eq8 = F_rx == F_rz*mu_r; %
 
-eqns = [eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq7,eq8];
+eqns = [eq2,eq3,eq4,eq5,eq6,eq7,eq7,eq8];
 vars = [F_fx F_rx F_fz F_rz wdot_f wdot_r a];
 
-solv = solve(eqns,vars)
+solv = solve(eqns,vars);
 
 
