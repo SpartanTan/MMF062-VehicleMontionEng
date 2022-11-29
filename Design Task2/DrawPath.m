@@ -78,7 +78,7 @@ axis manual;
 xlim(xLimits)
 ylim(yLimits)
 
-for i = 1:1/(sampleTime*100):length(psi)
+for i = 1:1/(sampleTime*10):length(psi)
     set(hTrajectory,'XData',X(1:i),'YData',Y(1:i))
     set(hCar,'Xdata',X(i)+[X1(i) X2(i) X3(i) X4(i)], 'Ydata',Y(i)+[Y1(i) Y2(i) Y3(i) Y4(i)]);
     set(hTitle,'String',sprintf('Time= %0.3g',t(i)));
