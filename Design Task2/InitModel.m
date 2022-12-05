@@ -20,7 +20,7 @@ vehicleData.R               = 0.3;                              % Wheel radius
 disp('Saab 9-3 parameters loaded');
 
 % Parameters to be changed in different tasks:
-vehicleData.lf              = 0.47*vehicleData.L;               % Distance of CoG from front axle
+vehicleData.lf              = 0.37*vehicleData.L;               % Distance of CoG from front axle
 vehicleData.lr              = vehicleData.L-vehicleData.lf;     % Distance of CoG from rear axle 
 simulationTime              = 10;                               % Simulation time
 vx0                         = 100;                              % Initial speed

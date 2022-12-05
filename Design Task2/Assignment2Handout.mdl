@@ -49,8 +49,8 @@ __MWOPC_PART_BEGIN__ /metadata/coreProperties.xml
   <dcterms:created xsi:type="dcterms:W3CDTF">2012-10-17T06:59:42Z</dcterms:created>
   <dc:creator>arikera</dc:creator>
   <cp:lastModifiedBy>tanzc</cp:lastModifiedBy>
-  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-04T13:39:26Z</dcterms:modified>
-  <cp:revision>10.0</cp:revision>
+  <dcterms:modified xsi:type="dcterms:W3CDTF">2022-12-05T11:03:29Z</dcterms:modified>
+  <cp:revision>10.2</cp:revision>
   <cp:version>R2022a</cp:version>
 </cp:coreProperties>
 
@@ -131,8 +131,8 @@ run ./InitModel.m;</P>
     <ConfigManagerSettings>
       <P Name="ModifiedByFormat">%&lt;Auto&gt;</P>
       <P Name="ModifiedDateFormat">%&lt;Auto&gt;</P>
-      <P Name="RTWModifiedTimeStamp">592065517</P>
-      <P Name="ModelVersionFormat">%&lt;AutoIncrement:10.0&gt;</P>
+      <P Name="RTWModifiedTimeStamp">592141458</P>
+      <P Name="ModelVersionFormat">%&lt;AutoIncrement:10.2&gt;</P>
     </ConfigManagerSettings>
     <EditorSettings>
       <P Name="LibraryLinkDisplay">none</P>
@@ -945,16 +945,47 @@ __MWOPC_PART_BEGIN__ /simulink/plugins/SimscapeModelParametersPlugin.xml
 __MWOPC_PART_BEGIN__ /simulink/ScheduleCore.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_graph version="1.1" packageUris="http://schema.mathworks.com/mf0/sltp_mm/R2021b_202106150630">
-  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="a51d47b7-589d-43b6-b309-1001d7e49c13">
+  <sltp.mm.core.Context type="sltp.mm.core.Context" uuid="92bf215c-2b72-416f-9edd-0df4e7a042fc">
+    <priorityDirection>HighNumberLast</priorityDirection>
     <editorState type="sltp.mm.core.EditorState" uuid="a6dd745b-280a-444a-8a2f-2aeeb8ddaafc">
+      <isSynchronized>true</isSynchronized>
       <panelState type="sltp.mm.core.EditorPanelState" uuid="cfaf5778-5950-4b91-b701-a77dbf104b98"/>
     </editorState>
-    <rootTask type="sltp.mm.core.Task" uuid="6e4bc47f-8fe3-4728-a3d3-2b6399bbdfb3">
-      <context type="sltp.mm.core.Context" uuid="a51d47b7-589d-43b6-b309-1001d7e49c13"/>
+    <rootTask type="sltp.mm.core.Task" uuid="28d066fa-db9b-4fd3-993a-cc7a6759a3a1">
+      <context type="sltp.mm.core.Context" uuid="92bf215c-2b72-416f-9edd-0df4e7a042fc"/>
       <explicit>false</explicit>
       <name>Default</name>
       <priority>-2147483648</priority>
-      <subgraph type="sltp.mm.core.Graph" uuid="9c688567-cabc-46c3-bc6c-5d3eb67353cd"/>
+      <subgraph type="sltp.mm.core.Graph" uuid="83ab41d2-d061-495a-bf24-02743fcbbf5f">
+        <tasks type="sltp.mm.core.Task" uuid="b622a858-bd81-4e7f-ac54-80aa932c494d">
+          <baseTask>true</baseTask>
+          <context type="sltp.mm.core.Context" uuid="92bf215c-2b72-416f-9edd-0df4e7a042fc"/>
+          <explicit>false</explicit>
+          <id>1</id>
+          <isTimed>true</isTimed>
+          <name>Cont</name>
+          <priority>40</priority>
+          <rates type="sltp.mm.core.Rate" uuid="44754703-bbb2-41dc-948f-f78dfbacc5ba">
+            <annotation>Cont</annotation>
+            <color>255</color>
+            <hasBlocks>true</hasBlocks>
+            <identifier>Continuous00</identifier>
+            <rateSpec type="sltp.mm.core.RateSpec">
+              <period>0.0</period>
+            </rateSpec>
+            <sti>0</sti>
+          </rates>
+          <rates type="sltp.mm.core.Rate" uuid="6df2a031-7259-4a9d-8203-8d69a9ccc461">
+            <annotation>D1</annotation>
+            <color>-436207361</color>
+            <hasBlocks>true</hasBlocks>
+            <rateSpec type="sltp.mm.core.RateSpec">
+              <period>.01</period>
+            </rateSpec>
+            <sti>1</sti>
+          </rates>
+        </tasks>
+      </subgraph>
     </rootTask>
   </sltp.mm.core.Context>
 </sltp_graph>
@@ -962,13 +993,47 @@ __MWOPC_PART_BEGIN__ /simulink/ScheduleEditor.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sltp_editor version="1.1" packageUris="http://schema.mathworks.com/mf0/DiagramEditor/R2019a_20181107 http://schema.mathworks.com/mf0/SltpSyntax/R2022a_202109161050">
   <diagram.editor.model.Diagram type="diagram.editor.model.Diagram" uuid="e3d92fae-35fd-4687-9f48-fc848434217d">
+    <entities type="diagram.editor.model.Entity" uuid="72c800dc-fc9f-44f4-96ba-ee51172d4492">
+      <position>0,0</position>
+      <size>0,0,0,0</size>
+      <syntaxElement type="sltp.mm.syntax.Node" uuid="ecc5c2bb-b59a-4360-8e94-190f028f1b48"/>
+      <title>Cont</title>
+      <type>base</type>
+      <subDiagram type="diagram.editor.model.Diagram" uuid="1640fc44-722f-4813-a512-44cd24886a72">
+        <position>0,0</position>
+        <syntaxElement type="sltp.mm.syntax.Graph" uuid="d4c05477-114d-4e91-8047-787a0427e4b3"/>
+        <title>Cont</title>
+        <type>graph.Graph</type>
+      </subDiagram>
+    </entities>
     <syntaxElement type="sltp.mm.syntax.Graph" uuid="2efbb87b-08b7-4792-983d-4bce2130d975"/>
     <title>Default</title>
     <type>graph.Graph</type>
   </diagram.editor.model.Diagram>
   <sltp.mm.syntax.Context type="sltp.mm.syntax.Context" uuid="d00718ad-3fa0-4890-8516-dc4d69b28a58">
     <rootGraph type="sltp.mm.syntax.Graph" uuid="2efbb87b-08b7-4792-983d-4bce2130d975">
-      <priorityDirection>HighNumberFirst</priorityDirection>
+      <children type="sltp.mm.syntax.Node" uuid="ecc5c2bb-b59a-4360-8e94-190f028f1b48">
+        <priority>40</priority>
+        <rates type="sltp.mm.syntax.RateData">
+          <color>#000000</color>
+          <hasBlocks>true</hasBlocks>
+          <rate>0</rate>
+          <title>Cont</title>
+        </rates>
+        <rates type="sltp.mm.syntax.RateData">
+          <color>#e60000</color>
+          <hasBlocks>true</hasBlocks>
+          <rate>0.01</rate>
+          <title>D1</title>
+        </rates>
+        <title>Cont</title>
+        <type>base</type>
+        <diagramElement type="diagram.editor.model.Entity" uuid="72c800dc-fc9f-44f4-96ba-ee51172d4492"/>
+        <subgraph type="sltp.mm.syntax.Graph" uuid="d4c05477-114d-4e91-8047-787a0427e4b3">
+          <title>Cont</title>
+          <diagramElement type="diagram.editor.model.Diagram" uuid="1640fc44-722f-4813-a512-44cd24886a72"/>
+        </subgraph>
+      </children>
       <title>Default</title>
       <diagramElement type="diagram.editor.model.Diagram" uuid="e3d92fae-35fd-4687-9f48-fc848434217d"/>
     </rootGraph>
@@ -1236,7 +1301,7 @@ __MWOPC_PART_BEGIN__ /simulink/stateflow/chart_42.xml
     
     % Lateral force
     CAxle = [Cf;Cr];
-    Fy    =  -CAxle.*slipAngle;
+    Fy    =  -CAxle.*tan(slipAngle);
     
     %%========================DO NOT CHANGE THIS=============================%%
     Fy    = min(maxLatForce,abs(Fy)).*sign(Fy);            % Saturation of Fy to sqrt(Fz^2-Fx^2)
@@ -1456,9 +1521,9 @@ __MWOPC_PART_BEGIN__ /simulink/stateflow/chart_53.xml
     %%=======================================================================%%
     % Equations of motion
 
-    vxDot     = ??;       % Derivative of longtidunial velocity
-    vyDot     = ??;       % Derivative of lateral velocity
-    wzDot     = ??;       % Derivative of yaw rotational velocity
+    vxDot     = (Fx(1)*cos(delta) + Fy(1)*sin(delta) + Fx(2))/m + wz*vy;       % Derivative of longtidunial velocity
+    vyDot     = (Fx(1)*sin(delta) + Fy(1)*cos(delta) + Fy(2))/m - wz*vx;       % Derivative of lateral velocity
+    wzDot     = ((Fx(1)*sin(delta) + Fy(1)*cos(delta))*lf - Fy(2)*lr)/J;       % Derivative of yaw rotational velocity
     
     %%========================DO NOT CHANGE THIS=============================%%
     vzDot     = 0;
@@ -1718,8 +1783,8 @@ __MWOPC_PART_BEGIN__ /simulink/stateflow/chart_66.xml
 
     %%=======================================================================%%
     % Slip equations
-    alphaf    = (vy + lf*wz)/vx - delta;   %  Front lateral tire slip 
-    alphar    = (vy - lr*wz)/vx;          %  Rear lateral tire slip
+    alphaf    = atan2(vy + lf*wz,vx) - delta;   %  Front lateral tire slip 
+    alphar    = atan2(vy - lr*wz,vx);          %  Rear lateral tire slip
     
     slipAngle = [alphaf; alphar];  % Slip angle vector
     %%=======================================================================%%
@@ -2600,7 +2665,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_282.xml
     <P Name="Parameters">vehicleData</P>
     <P Name="PortCounts">[3 3]</P>
     <P Name="SFunctionDeploymentMode">off</P>
-    <P Name="EnableBusSupport">off</P>
+    <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
     <Port>
       <P Name="PortNumber">2</P>
@@ -2704,7 +2769,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_283.xml
     <P Name="FunctionName">sf_sfun</P>
     <P Name="PortCounts">[3 2]</P>
     <P Name="SFunctionDeploymentMode">off</P>
-    <P Name="EnableBusSupport">off</P>
+    <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
     <Port>
       <P Name="PortNumber">2</P>
@@ -2798,7 +2863,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_287.xml
     <P Name="Parameters">vehicleData</P>
     <P Name="PortCounts">[4 4]</P>
     <P Name="SFunctionDeploymentMode">off</P>
-    <P Name="EnableBusSupport">off</P>
+    <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
     <Port>
       <P Name="PortNumber">2</P>
@@ -2920,7 +2985,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_288.xml
     <P Name="Parameters">vehicleData</P>
     <P Name="PortCounts">[2 2]</P>
     <P Name="SFunctionDeploymentMode">off</P>
-    <P Name="EnableBusSupport">off</P>
+    <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
     <Port>
       <P Name="PortNumber">2</P>
@@ -2999,7 +3064,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_289.xml
     <P Name="Parameters">vehicleData</P>
     <P Name="PortCounts">[2 2]</P>
     <P Name="SFunctionDeploymentMode">off</P>
-    <P Name="EnableBusSupport">off</P>
+    <P Name="EnableBusSupport">on</P>
     <P Name="SFcnIsStateOwnerBlock">off</P>
     <Port>
       <P Name="PortNumber">2</P>
@@ -3141,6 +3206,7 @@ __MWOPC_PART_BEGIN__ /simulink/systems/system_root.xml
   <P Name="Open">on</P>
   <P Name="SetExecutionDomain">off</P>
   <P Name="ExecutionDomainType">Deduce</P>
+  <P Name="ZoomFactor">80</P>
   <P Name="ReportName">simulink-default.rpt</P>
   <P Name="SIDHighWatermark">291</P>
   <P Name="SimulinkSubDomain">Simulink</P>
@@ -3617,17 +3683,17 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="IsTabbed" Class="logical">1</P>
           <P Name="ViewObjType" Class="char">SimulinkTopLevel</P>
           <P Name="LoadSaveID" Class="char">0</P>
-          <P Name="Extents" Class="double">[2810.0, 1404.0]</P>
-          <P Name="ZoomFactor" Class="double">1.0</P>
-          <P Name="Offset" Class="double">[470.58747090859015, 51.925381376505754]</P>
-          <P Name="SceneRectInView" Class="double">[470.58747090859015, 51.925381376505754, 1405.0, 702.0]</P>
+          <P Name="Extents" Class="double">[2810.0, 984.0]</P>
+          <P Name="ZoomFactor" Class="double">0.79999999999999993</P>
+          <P Name="Offset" Class="double">[459.35760977791631, 107.71666666666681]</P>
+          <P Name="SceneRectInView" Class="double">[459.35760977791631, 107.71666666666681, 1756.2500000000002, 615.0]</P>
         </Object>
         <Object ObjectID="6">
           <P Name="IsActive" Class="logical">0</P>
           <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">StudioAdapterBlock</P>
           <P Name="LoadSaveID" Class="char">287</P>
-          <P Name="Extents" Class="double">[2810.0, 1404.0]</P>
+          <P Name="Extents" Class="double">[2810.0, 984.0]</P>
           <P Name="ZoomFactor" Class="double">1.0</P>
           <P Name="Offset" Class="double">[0.0, 0.0]</P>
           <P Name="SceneRectInView" Class="double">[0.0, 0.0, 0.0, 0.0]</P>
@@ -3637,10 +3703,10 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">SimulinkSubsys</P>
           <P Name="LoadSaveID" Class="char">277</P>
-          <P Name="Extents" Class="double">[2810.0, 1404.0]</P>
+          <P Name="Extents" Class="double">[2810.0, 984.0]</P>
           <P Name="ZoomFactor" Class="double">1.5</P>
-          <P Name="Offset" Class="double">[-94.360416666666367, -54.26666666666668]</P>
-          <P Name="SceneRectInView" Class="double">[-94.360416666666367, -54.26666666666668, 936.66666666666663, 468.0]</P>
+          <P Name="Offset" Class="double">[-93.360416666666353, 51.596078784717307]</P>
+          <P Name="SceneRectInView" Class="double">[-93.360416666666353, 51.596078784717307, 936.66666666666663, 328.0]</P>
         </Object>
         <Object ObjectID="8">
           <P Name="IsActive" Class="logical">0</P>
@@ -3657,7 +3723,7 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">StudioAdapterBlock</P>
           <P Name="LoadSaveID" Class="char">282</P>
-          <P Name="Extents" Class="double">[2810.0, 1404.0]</P>
+          <P Name="Extents" Class="double">[2810.0, 984.0]</P>
           <P Name="ZoomFactor" Class="double">1.0</P>
           <P Name="Offset" Class="double">[0.0, 0.0]</P>
           <P Name="SceneRectInView" Class="double">[0.0, 0.0, 0.0, 0.0]</P>
@@ -3667,7 +3733,7 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="IsTabbed" Class="logical">0</P>
           <P Name="ViewObjType" Class="char">StudioAdapterBlock</P>
           <P Name="LoadSaveID" Class="char">288</P>
-          <P Name="Extents" Class="double">[2810.0, 1404.0]</P>
+          <P Name="Extents" Class="double">[2810.0, 984.0]</P>
           <P Name="ZoomFactor" Class="double">1.0</P>
           <P Name="Offset" Class="double">[0.0, 0.0]</P>
           <P Name="SceneRectInView" Class="double">[0.0, 0.0, 0.0, 0.0]</P>
@@ -3710,9 +3776,9 @@ __MWOPC_PART_BEGIN__ /simulink/windowsInfo.xml
           <P Name="Minimized" Class="char">Unset</P>
         </Object>
       </Array>
-      <P Name="WindowState" Class="char">AAAA/wAAAAD9AAAAAwAAAAAAAAC9AAAB+PwCAAAABPsAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAAAAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAD0AP////sAAABgAFMAaQBtAHUAbABpAG4AawA6AEUAZABpAHQAbwByADoAUgBlAGYAZQByAGUAbgBjAGUAZABGAGkAbABlAHMALwBSAGUAZgBlAHIAZQBuAGMAZQBkACAARgBpAGwAZQBzAAAAAAD/////AAABAAD///8AAAABAAAAAAAAAAD8AgAAAAH7AAAAVABHAEwAVQBFADIAOgBQAHIAbwBwAGUAcgB0AHkASQBuAHMAcABlAGMAdABvAHIALwBQAHIAbwBwAGUAcgB0AHkAIABJAG4AcwBwAGUAYwB0AG8AcgAAAAAA/////wAAA1QA////AAAAAwAAAAAAAAAA/AEAAAAB+/////8AAAAAAP////8AAAKuAP///wAAC0AAAAXcAAAAAQAAAAIAAAABAAAAAvwAAAABAAAAAgAAAAA=</P>
+      <P Name="WindowState" Class="char">AAAA/wAAAAD9AAAAAwAAAAAAAAC9AAAB+PwCAAAABPsAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAAAAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAD0AP////sAAABgAFMAaQBtAHUAbABpAG4AawA6AEUAZABpAHQAbwByADoAUgBlAGYAZQByAGUAbgBjAGUAZABGAGkAbABlAHMALwBSAGUAZgBlAHIAZQBuAGMAZQBkACAARgBpAGwAZQBzAAAAAAD/////AAABAAD///8AAAABAAAAAAAAAAD8AgAAAAH7AAAAVABHAEwAVQBFADIAOgBQAHIAbwBwAGUAcgB0AHkASQBuAHMAcABlAGMAdABvAHIALwBQAHIAbwBwAGUAcgB0AHkAIABJAG4AcwBwAGUAYwB0AG8AcgAAAAAA/////wAAA1QA////AAAAAwAAC0AAAAGc/AEAAAAB+/////8BAAAAAAAAC0AAAAKuAP///wAAC0AAAAQ4AAAAAQAAAAIAAAABAAAAAvwAAAABAAAAAgAAAAA=</P>
       <Array PropName="PersistedApps" Type="Cell" Dimension="0*1"/>
-      <P Name="WindowUuid" Class="char">73e84b84-0f3e-4dd9-849f-da9614ab15b7</P>
+      <P Name="WindowUuid" Class="char">8401537e-121c-48fe-9bb3-944a3e1524ba</P>
     </Object>
     <P Name="BDUuid" Class="char">69d636d5-c83d-4731-a5fa-245bcd8a3d62</P>
   </Object>
