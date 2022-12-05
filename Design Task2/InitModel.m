@@ -25,7 +25,7 @@ vehicleData.lr              = vehicleData.L-vehicleData.lf;     % Distance of Co
 simulationTime              = 10;                               % Simulation time
 vx0                         = 100;                              % Initial speed
 vehicleData.brakeDemand     = 0.0;                              % Brake force demand
-SWA                         = 10;                               % Steering wheel angle                                        
+SWA                         = 3;                           % Steering wheel angle                                        
 vehicleData.pRollDist       = 0.65;                             % Front/Total roll stiffness distribution
 vehicleData.brakeDist       = 0.5;                              % Front/Total brake distribution ratio
 % end of file
