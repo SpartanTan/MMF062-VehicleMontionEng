@@ -20,12 +20,12 @@ vehicleData.R               = 0.3;                              % Wheel radius
 disp('Saab 9-3 parameters loaded');
 
 % Parameters to be changed in different tasks:
-vehicleData.lf              = 0.67*vehicleData.L;               % Distance of CoG from front axle
+vehicleData.lf              = 0.47*vehicleData.L;               % Distance of CoG from front axle
 vehicleData.lr              = vehicleData.L-vehicleData.lf;     % Distance of CoG from rear axle 
 simulationTime              = 10;                               % Simulation time
-vx0                         = 100;                              % Initial speed
-vehicleData.brakeDemand     = 4000.0;                              % Brake force demand
-SWA                         = 10;                           % Steering wheel angle                                        
-vehicleData.pRollDist       = 0.30;                             % Front/Total roll stiffness distribution
+vx0                         = 80;                              % Initial speed
+vehicleData.brakeDemand     = 1000.0;                              % Brake force demand
+SWA                         = 3.0;                           % Steering wheel angle                                        
+vehicleData.pRollDist       = 0.65;                             % Front/Total roll stiffness distribution
 vehicleData.brakeDist       = 0.5;                              % Front/Total brake distribution ratio
 % end of file

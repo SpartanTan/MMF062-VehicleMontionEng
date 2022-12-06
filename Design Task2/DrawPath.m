@@ -13,7 +13,7 @@ vy = x(:,2);
 wz = x(:,3);
 ax = y(:,1);
 ay = y(:,2);
-% wzDot = x(:,6);
+wzDot = psip2;
 
 %% Longitudinal velocity
 % figure('Name','Longitudinal Velocity');
@@ -42,6 +42,13 @@ grid on;
 ylabel('Yaw rate [deg/s]')
 xlabel('Time [s]')
 legend('Actual','Neutral Steer')
+
+%% Yaw acc
+figure(4)
+plot(t,wzDot*180/pi)
+grid on;
+ylabel('Yaw acceleration [deg/s]')
+xlabel('Time [s]')
 
 %% Vehicle travel animation
 figure(2);
