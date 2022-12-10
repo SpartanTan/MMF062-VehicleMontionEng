@@ -35,9 +35,9 @@ vx = 100/3.6;%[m/s] convert 100 km/h to m/s
 df1 = ay*(CAR.L+Ku1*CAR.m*vx^2)/vx^2;
 df2 = ay*(CAR.L+Ku2*CAR.m*vx^2)/vx^2;
 df3 = ay*(CAR.L+Ku3*CAR.m*vx^2)/vx^2;
-sw1 = df1*CAR.steeringRatio
-sw2 = df2*CAR.steeringRatio
-sw3 = df3*CAR.steeringRatio
+sw1 = rad2deg(df1*CAR.steeringRatio);
+sw2 = rad2deg(df2*CAR.steeringRatio);
+sw3 = rad2deg(df3*CAR.steeringRatio);
 
 
 %% Task 1.5 Steering wheel angle for varying operating point (1 point)
@@ -53,7 +53,7 @@ sw3 = GetSteeringAngle(vx,Rp,Ku3,CAR);
 hold on
 plot(vx,sw1);
 plot(vx,sw2);
-plot(vx,sw3);
+plot(vx,sw3);   
 legend('Ku1', 'Ku2','Ku3');
 
 
@@ -67,6 +67,7 @@ function vxChar = GetCharSpeed(Ku,CAR)
 end
 function sw = GetSteeringAngle(vx,Rp,Ku,CAR)
     sw = (CAR.L/Rp + Ku*CAR.m.*vx.^2/Rp)*CAR.steeringRatio;
+    sw = rad2deg(sw);
 end
 function Ku = CalcKu(lf1,CAR)
 c0 = 30.7;

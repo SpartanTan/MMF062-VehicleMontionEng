@@ -36,9 +36,9 @@ vehicleData.lf              = caseLf*vehicleData.L;               % Distance of 
 vehicleData.lr              = vehicleData.L-vehicleData.lf;     % Distance of CoG from rear axle 
 simulationTime              = 10;                               % Simulation time
 vx0                         = 80;                              % Initial speed
-vehicleData.brakeDemand     = 4000;                              % Brake force demand
-SWA                         = 10;                          % Steering wheel angle default = 10                                    
-vehicleData.pRollDist       = 0.65;                             % Front/Total roll stiffness distribution
+vehicleData.brakeDemand     = 1000;                              % Brake force demand
+SWA                         = 3;                          % Steering wheel angle default = 10                                    
+vehicleData.pRollDist       = 0.    ;                             % Front/Total roll stiffness distribution
 vehicleData.brakeDist       = 0.5;                              % Front/Total brake distribution ratio
 % end of file
 
