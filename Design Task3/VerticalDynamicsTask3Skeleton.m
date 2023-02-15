@@ -8,7 +8,7 @@ clc;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load parameters from file "InitParameters.m"
 
-InitParameters
+InitParametersSkeleton
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Task 3.1
@@ -23,20 +23,29 @@ roadSpectrumRough = zeros(length(angularFrequencyVector),1);
 roadSpectrumVeryRough = zeros(length(angularFrequencyVector),1);
 
 for j = 1 : length(angularFrequencyVector)
-    roadSpectrumSmooth(j,:) = %ADD YOUR CODE HERE
-    roadSpectrumRough(j,:) = %ADD YOUR CODE HERE
-    roadSpectrumVeryRough(j,:) = %ADD YOUR CODE HERE
+    roadSpectrumSmooth(j,:) = (vehicleVelocitySmooth^(roadWavinessSmooth-1))*roadSeveritySmooth*(angularFrequencyVector(j)^(-roadWavinessSmooth));
+    roadSpectrumRough(j,:) = (vehicleVelocityRough^(roadWavinessRough-1))*roadSeverityRough*(angularFrequencyVector(j)^(-roadWavinessRough));
+    roadSpectrumVeryRough(j,:) = (vehicleVelocityVeryRough^(roadWavinessVeryRough-1))*roadSeverityVeryRough*(angularFrequencyVector(j)^(-roadWavinessVeryRough));
 end
 
 % Calculate transfer functions for front wheel Zr to Ride
 % You can use result from Task 1
 
 %ADD YOUR CODE HERE
+sprungMassFront =  0.5*totalSprungMass*(wheelBase-distanceCogToFrontAxle)/wheelBase;
+unsprungMassFront = 0.5*totalUnsprungMass*(wheelBase-distanceCogToFrontAxle)/wheelBase;
+Af =  [0,1,0,0;
+    -frontWheelSuspStiff/sprungMassFront, -frontWheelSuspDamp/sprungMassFront, frontWheelSuspStiff/sprungMassFront,frontWheelSuspDamp/sprungMassFront;
+    0,0,0,1;
+    frontWheelSuspStiff/unsprungMassFront, frontWheelSuspDamp/unsprungMassFront, (-tireStiff-frontWheelSuspStiff)/unsprungMassFront, (-tireDamp-frontWheelSuspDamp)/unsprungMassFront];%ADD YOUR CODE HERE
+Bf = [0;0;0;tireStiff]*1/unsprungMassFront;
+C1f = [1 0 0 0];
+D1f = 0;
 
 transferFunctionFrontZrToRide = zeros(length(angularFrequencyVector),1);
 
 for j = 1 : length(angularFrequencyVector)
-    transferFunctionFrontZrToRide(j,:) = %ADD YOUR CODE HERE 
+    transferFunctionFrontZrToRide(j,:) = -angularFrequencyVector(j)^2*C1f*inv((1i*angularFrequencyVector(j)*eye(4)-Af))*Bf+D1f;
 end
 
 % Calculate acceleration response spectrum for all roads
@@ -46,9 +55,9 @@ psdAccelerationRough = zeros(length(angularFrequencyVector),1);
 psdAccelerationVeryRough = zeros(length(angularFrequencyVector),1);
 
 for j = 1 : length(angularFrequencyVector)
-    psdAccelerationSmooth(j,:) = %ADD YOUR CODE HERE
-    psdAccelerationRough(j,:) = %ADD YOUR CODE HERE
-    psdAccelerationVeryRough(j,:) = %ADD YOUR CODE HERE
+    psdAccelerationSmooth(j,:) = abs(transferFunctionFrontZrToRide(j))^2*roadSpectrumSmooth(j);
+    psdAccelerationRough(j,:) = abs(transferFunctionFrontZrToRide(j))^2*roadSpectrumRough(j);
+    psdAccelerationVeryRough(j,:) = abs(transferFunctionFrontZrToRide(j))^2*roadSpectrumVeryRough(j);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,8 +74,10 @@ timeOnSmoothRoad = (distanceSmoothRoad / vehicleVelocitySmooth)*numberOfTripsPer
 timeOnRoughRoad = (distanceRoughRoad / vehicleVelocityRough)*numberOfTripsPerDay
 timeOnVeryRoughRoad = (distanceVeryRoughRoad / vehicleVelocityVeryRough)*numberOfTripsPerDay
 
-timeWeightedMsAcceleration = %ADD YOUR CODE HERE
-
+timeWeightedMsAcceleration = (weightedRmsAccelerationSmooth^2*timeOnSmoothRoad+ ...
+                              weightedRmsAccelerationRough^2*timeOnRoughRoad+ ...
+                              weightedRmsAccelerationVeryRough^2*timeOnVeryRoughRoad) ...
+                              /(timeOnSmoothRoad+timeOnRoughRoad+timeOnVeryRoughRoad);
 timeWeightedRmsAcceleration = sqrt(timeWeightedMsAcceleration);
 
 disp(['timeWeightedRmsAcceleration =' num2str(timeWeightedRmsAcceleration),' m/s2 (1.15)',...
