@@ -13,7 +13,7 @@ clc;            % Clear command window
 CONST = Sub_read_data;
 
 %-----Define torque distribution between front and rear axis [0 ... 1]
-CONST.torqf = 1; % torqueRatio: 0 => RWD, 1 => FWD
+CONST.torqf = 0; % torqueRatio: 0 => RWD, 1 => FWD
 
 %----Define road condition-------------------------------------------------
 % Function input
@@ -21,7 +21,7 @@ roadCondition = 1; % dry=1, wet=2, ice=3
 
 %----Define slope of road--------------------------------------------------
 % Function input
-slope = 2*pi/180; % Slope of the road in 2 deg!
+slope = 8*pi/180; % Slope of the road in 2 deg!
 
 %----Task 1: Define initial conditions-------------------------------------
 s    = 0;                % Initial travelled distance
@@ -32,7 +32,7 @@ gear = 1;
 
 %----Define timestep and integration time----------------------------------
 Tstart = 0;            % Starting t
-Tend   = 18;           % Ending t
+Tend   = 15;           % Ending t
 dt     = 0.0005;       % t step
 t=(Tstart:dt:Tend);    % t vector
 
@@ -64,6 +64,9 @@ Tdrivf_max0 = Fzfapprox*mutilmax*CONST.R;
 Tdrivr_max0 = Fzrapprox*mutilmax*CONST.R;
 Tdrivf_max = Tdrivf_max0;
 Tdrivr_max = Tdrivr_max0;
+
+finishtime = 0;
+
 %----Simulation over t-----------------------------------------------------
 for i=1:length(t)
     % Calcultate slip
@@ -127,6 +130,10 @@ for i=1:length(t)
     Tdrivr_vector(i)=Tdrivr;
     gear_vector(i)=gear;
     weng_vector(i)=weng;
+    
+    if s >= 100 && finishtime == 0
+        finishtime = i*dt;
+    end
 
 end %
 
@@ -134,3 +141,4 @@ end %
 Sub_plot(t,a_vector,v_vector,s_vector,Tdrivf_vector,Tdrivr_vector,...
     Fzf_vector,Fzr_vector,slipf_vector, slipr_vector,gear_vector, ...
     weng_vector);
+fprintf("time is %f ", finishtime)
